@@ -47,27 +47,22 @@ else
 				;;
 			2)
 				# Install NTP
-				apt-get install -y ntpdate
-				# Set NTP
-				cp /etc/ntp.conf /etc/ntp.conf.bak
-				> /etc/ntp.conf
-				sh -c 'echo "# /etc/ntp.conf, configuration for ntpd; see ntp.conf(5) for help
+				apt remove -y ntp ntpdate
+				timedatectl set-timezone Europe/Prague
+				timedatectl 
+				systemctl status systemd-timesyncd
+				systemctl enable systemd-timesyncd
 
-				driftfile /var/lib/ntp/ntp.drift
-				leapfile /usr/share/zoneinfo/leap-seconds.list
-				statistics loopstats peerstats clockstats
-				filegen loopstats file loopstats type day enable
-				filegen peerstats file peerstats type day enable
-				filegen clockstats file clockstats type day enable
-				server ntp1.oict.cz iburst
-				server ntp2.oict.cz iburst
-				restrict -4 default kod notrap nomodify nopeer noquery limited
-				restrict -6 default kod notrap nomodify nopeer noquery limited
-				restrict 127.0.0.1
-				restrict ::1
-				restrict source notrap nomodify noquery" >> /etc/ntp.conf'
-				systemctl restart ntp
-				ntpq -p
+				cp /etc/systemd/timesyncd.conf /etc/systemd/timesyncd.conf.bak
+				> /etc/systemd/timesyncd.conf
+				sh -c 'echo "
+				[Time]
+				NTP=ntp1.oict.cz
+				FallbackNTP=ntp2.oict.cz" >> /etc/systemd/timesyncd.conf'
+
+
+				systemctl restart systemd-timesyncd
+				timedatectl timesync-status
 				;;
 			3)
 				# Set hostname
