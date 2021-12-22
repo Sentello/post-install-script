@@ -50,7 +50,6 @@ else
 				apt remove -y ntp ntpdate
 				timedatectl set-timezone Europe/Prague
 				timedatectl 
-				systemctl status systemd-timesyncd
 				systemctl enable systemd-timesyncd
 
 				cp /etc/systemd/timesyncd.conf /etc/systemd/timesyncd.conf.bak
