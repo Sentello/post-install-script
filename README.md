@@ -1,5 +1,6 @@
 # post-install-script
 These scipt will help you with post install tasks, like:
+
 0. update and upgrade server
 1. Set resolv.conf and /etc/hosts
 2. Set NTP
