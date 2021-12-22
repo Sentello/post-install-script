@@ -67,6 +67,7 @@ else
 				restrict ::1
 				restrict source notrap nomodify noquery" >> /etc/ntp.conf'
 				systemctl restart ntp
+				ntpq -p
 				;;
 			3)
 				# Set hostname
