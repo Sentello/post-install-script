@@ -54,12 +54,7 @@ else
 
 				cp /etc/systemd/timesyncd.conf /etc/systemd/timesyncd.conf.bak
 				> /etc/systemd/timesyncd.conf
-				sh -c 'echo "
-				[Time]
-				NTP=ntp1.oict.cz
-				FallbackNTP=ntp2.oict.cz" >> /etc/systemd/timesyncd.conf'
-
-
+				echo $'[Time]\nNTP=ntp1.oict.cz\nFallbackNTP=ntp2.oict.cz' > /etc/systemd/timesyncd.conf
 				systemctl restart systemd-timesyncd
 				timedatectl timesync-status
 				;;
