@@ -18,7 +18,7 @@ else
 	apt-get update && apt-get upgrade -y
 	
 	apt-get install dialog
-	cmd=(dialog --separate-output --checklist "Please, Select what you want to do:" 22 76 16)
+	cmd=(dialog --separate-output --checklist "Please, Select what do you want to do:" 22 76 16)
 	options=(1 "Set resolv.conf and /etc/hosts" on    # any option can be set to "off"
 			2 "Set NTP" on
 			3 "Set hostname" on
