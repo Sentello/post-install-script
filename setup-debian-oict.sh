@@ -47,7 +47,7 @@ else
 				;;
 			2)
 				# Install NTP
-				apt-get install -y ntp
+				apt-get install -y ntpdate
 				# Set NTP
 				cp /etc/ntp.conf /etc/ntp.conf.bak
 				> /etc/ntp.conf
