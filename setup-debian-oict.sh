@@ -4,9 +4,9 @@
 # INSTRUCTIONS FOR USE:
 # 1. Copy this shell script to your /home directory or the /tmp directory.
 # 2. Make it executable with the following command: 
-#      chmod a+x setup-debian.sh
+#      chmod a+x setup-debian-oict.sh
 # 3. Execute the script as a sudo user:
-#      sudo ./setup-debian.sh
+#      sudo ./setup-debian-oict.sh
 
 
 if [[ $EUID -ne 0 ]]; then
