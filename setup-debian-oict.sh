@@ -18,13 +18,13 @@ else
 	apt-get update && apt-get upgrade -y
 	
 	apt-get install dialog
-	cmd=(dialog --separate-output --checklist "Please Select what you want to do:" 22 76 16)
+	cmd=(dialog --separate-output --checklist "Please, Select what you want to do:" 22 76 16)
 	options=(1 "Set resolv.conf and /etc/hosts" on    # any option can be set to "off"
 			2 "Set NTP" on
 			3 "Set hostname" on
-			4 "Set ssh to permit root and keys only" on
-			5 "Install FreeIPA" on
-			6 "Set FreeIPA" on
+			4 "Set SSH to permit root and SSH keys only" on
+			5 "Install FreeIPA client" on
+			6 "Set FreeIPA client" on
 			7 "Reboot server" on)
 
 		choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
