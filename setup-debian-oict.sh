@@ -46,6 +46,8 @@ else
 				echo "10.130.101.9 ipa2.tux.oict.cz ipa2" >> /etc/hosts
 				;;
 			2)
+				# Install NTP
+				apt-get install -y ntp
 				# Set NTP
 				cp /etc/ntp.conf /etc/ntp.conf.bak
 				> /etc/ntp.conf
@@ -64,6 +66,7 @@ else
 				restrict 127.0.0.1
 				restrict ::1
 				restrict source notrap nomodify noquery" >> /etc/ntp.conf'
+				systemctl restart ntp
 				;;
 			3)
 				# Set hostname
