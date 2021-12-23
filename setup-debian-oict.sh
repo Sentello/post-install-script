@@ -18,7 +18,7 @@ else
 	apt-get update && apt-get upgrade -y
 	
 	apt-get install dialog
-	cmd=(dialog --separate-output --checklist "Please, Select what do you want to do:" 22 76 16)
+	cmd=(dialog --separate-output --checklist "Please, select what do you want to do:" 22 76 16)
 	options=(1 "Set resolv.conf and /etc/hosts" on    # any option can be set to "off"
 			2 "Set NTP" on
 			3 "Set hostname" on
@@ -41,12 +41,14 @@ else
 				echo "nameserver 10.130.101.9" >> /etc/resolv.conf
 				
 				# Edit /etc/hosts
+				echo "Setting /etc/hosts"
 				echo "# FreeIPA Servers" >> /etc/hosts
 				echo "10.130.101.8 ipa.tux.oict.cz ipa" >> /etc/hosts
 				echo "10.130.101.9 ipa2.tux.oict.cz ipa2" >> /etc/hosts
 				;;
 			2)
 				# Install NTP
+				echo "Setting NTP client"
 				apt remove -y ntp ntpdate
 				timedatectl set-timezone Europe/Prague
 				timedatectl 
@@ -79,9 +81,11 @@ else
 				;;
     		4)	
 				# Permit Root login:
+				echo "Permit root login"
 				sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config && \
 				
 				# Only SSH keys:
+				echo "Setting to accept only SSH keys"
 				sed -i 's/#PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config && \
 				systemctl reload ssh
 				echo "Finished with setup"
@@ -109,7 +113,7 @@ else
 					ipa --version
 
 				else 
-					echo "FreeIPA was not installed!!!"
+					echo "FreeIPA was not installed"
 				 
 				fi
 				;;
