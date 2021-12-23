@@ -79,7 +79,7 @@ else
 				# Display new hostname
 				echo "New hostname: $newhostname"
 				;;
-    		4)	
+    			4)
 				# Permit Root login:
 				echo "Permit root login"
 				sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config && \
