@@ -14,4 +14,5 @@ These scipts will help you with post install tasks, like:
 1. chmod a+x setup-debian-oict.sh
 2. ./setup-debian-oict.sh
 
-![image](https://user-images.githubusercontent.com/44606412/147137011-5547e8aa-1613-4023-a46d-9705c2cca087.png)
+![image](https://user-images.githubusercontent.com/44606412/147390387-322a8161-9934-4022-89eb-e91a398772a6.png)
+
