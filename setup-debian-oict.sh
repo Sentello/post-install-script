@@ -45,6 +45,7 @@ else
 				echo "# FreeIPA Servers" >> /etc/hosts
 				echo "10.130.101.8 ipa.tux.oict.cz ipa" >> /etc/hosts
 				echo "10.130.101.9 ipa2.tux.oict.cz ipa2" >> /etc/hosts
+				echo "10.130.101.10 ipa3.tux.oict.cz ipa3" >> /etc/hosts
 				;;
 			2)
 				# Install NTP
