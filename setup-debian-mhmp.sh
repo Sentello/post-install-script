@@ -22,7 +22,7 @@ else
 	options=(1 "Set hostname" off # any option can be set to "off"
 			2 "Set hostname to zabbix_agentd.conf" on
 			3 "Create new user" on
-			9 "Reboot server" on)
+			9 "Reboot server" off)
 
 		choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 		clear
