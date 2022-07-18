@@ -20,7 +20,7 @@ else
 	apt-get install dialog
 	cmd=(dialog --separate-output --checklist "Please, select what do you want to do:" 22 76 16)
 	options=(1 "Set hostname" off # any option can be set to "off"
-			2 "Set hostname to zabbix_agentd.conf" on
+			2 "Set hostname at zabbix_agentd.conf" on
 			3 "Create new user" on
 			9 "Reboot server" off)
 
