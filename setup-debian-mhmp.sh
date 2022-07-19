@@ -51,9 +51,9 @@ else
 			2)
 			  # Display current hostname
 			  curhostname=$(cat /etc/hostname)
-				echo "Current hostname: '$curhostname'"
-				sed -i "s/# Hostname=/Hostname=$curhostname/" /etc/zabbix/zabbix_agentd.conf
-				;;
+			  echo "Current hostname: '$curhostname'"
+			  sed -i "s/# Hostname=/Hostname=$curhostname/" /etc/zabbix/zabbix_agentd.conf
+			  ;;
 		  3)
         # Parameter is user name
         echo "Enter new user name: "
