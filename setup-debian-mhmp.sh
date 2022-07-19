@@ -30,100 +30,100 @@ else
 		do
 		    case $choice in
 			1)
-				# Set hostname
-				curhostname=$(cat /etc/hostname)
+			 # Set hostname
+			 curhostname=$(cat /etc/hostname)
 				
-				# Display current hostname
-				echo "Current hostname: '$curhostname'"
+			 # Display current hostname
+			 echo "Current hostname: '$curhostname'"
 				
-				# Set $newhostname as new hostname 
-				echo "Enter new hostname: "
-				read newhostname
+			 # Set $newhostname as new hostname 
+			 echo "Enter new hostname: "
+			 read newhostname
 				
-				# Change the hostname in /etc/hostname, /etc/hosts files and hostnamectl
-				sed -i "s/$curhostname/$newhostname/g" /etc/hostname
-				sed -i "s/$curhostname/$newhostname/g" /etc/hosts
-				hostnamectl set-hostname $newhostname
+			 # Change the hostname in /etc/hostname, /etc/hosts files and hostnamectl
+			 sed -i "s/$curhostname/$newhostname/g" /etc/hostname
+			 sed -i "s/$curhostname/$newhostname/g" /etc/hosts
+			 hostnamectl set-hostname $newhostname
 				
-				# Display new hostname
-				echo "New hostname: $newhostname"
-				;;
+			 # Display new hostname
+			 echo "New hostname: $newhostname"
+			 ;;
 			2)
 			  # Display current hostname
 			  curhostname=$(cat /etc/hostname)
 			  echo "Current hostname: '$curhostname'"
 			  sed -i "s/# Hostname=/Hostname=$curhostname/" /etc/zabbix/zabbix_agentd.conf
 			  ;;
-		  3)
-        # Parameter is user name
-        echo "Enter new user name: "
-        read USER_NAME
+		        3)
+                          # Parameter is user name
+                          echo "Enter new user name: "
+                          read USER_NAME
                 
 
-        # The rest of the parameters are for accout comments.
-        shift
-        echo "Enter account comments:  "
+                          # The rest of the parameters are for accout comments.
+                          shift
+                          echo "Enter account comments:  "
 			  read COMMENT
                 
-        # Read SSH pub keys.
-        shift
-        echo "Enter user account authorized SSH key: "
-        read SSHKEY
-        # Create the user wtih teh password.
-        useradd -c "${COMMENT}" -m ${USER_NAME} -s /bin/bash &> /dev/null
-        # Check to see if the useradd command succeeded.
+                          # Read SSH pub keys.
+                          shift
+                          echo "Enter user account authorized SSH key: "
+                          read SSHKEY
+                          # Create the user wtih teh password.
+                          useradd -c "${COMMENT}" -m ${USER_NAME} -s /bin/bash &> /dev/null
+                          # Check to see if the useradd command succeeded.
                 
-        if [[ "${?}" -ne 0 ]]
-           then
-             echo 'ERROR: The account could not be created.' >&2
-           exit 1
-        fi
+                          if [[ "${?}" -ne 0 ]]
+                             then
+                                 echo 'ERROR: The account could not be created.' >&2
+                             exit 1
+                          fi
 
-        # Set the password.
-        PASSWORD=$(date +%s%N | base64 )
-        # echo ${PASSWORD} | passwd --stdin ${USER_NAME} &> /dev/null
-        echo -e "${PASSWORD}\n${PASSWORD}" | passwd ${USER_NAME} &> /dev/null
+                         # Set the password.
+                         PASSWORD=$(date +%s%N | base64 )
+                         # echo ${PASSWORD} | passwd --stdin ${USER_NAME} &> /dev/null
+                         echo -e "${PASSWORD}\n${PASSWORD}" | passwd ${USER_NAME} &> /dev/null
                 
-        # Check to see if the password command succeeded.
-        if [[ "${?}" -ne 0 ]]
-           then
-             echo 'ERROR: The password could not be set.' >&2
-           exit 1
-        fi
+                         # Check to see if the password command succeeded.
+                         if [[ "${?}" -ne 0 ]]
+                            then
+                                echo 'ERROR: The password could not be set.' >&2
+                            exit 1
+                         fi
 
-        # Force password change on first login.
-        passwd -e ${USER_NAME} &> /dev/null
+                         # Force password change on first login.
+                         passwd -e ${USER_NAME} &> /dev/null
                 
-        # Add user to sudo 
-        usermod -aG sudo ${USER_NAME}
+                         # Add user to sudo 
+                         usermod -aG sudo ${USER_NAME}
                 
-        # SSH keys folder
-        mkdir /home/${USER_NAME}/.ssh
-        touch /home/${USER_NAME}/.ssh/authorized_keys
-        chown -R ${USER_NAME}:${USER_NAME} /home/${USER_NAME}/.ssh
-        chmod 700 /home/${USER_NAME}/.ssh
-        echo ${SSHKEY} > /home/${USER_NAME}/.ssh/authorized_keys
-        chmod 600 /home/${USER_NAME}/.ssh/authorized_keys
+                         # SSH keys folder
+                         mkdir /home/${USER_NAME}/.ssh
+                         touch /home/${USER_NAME}/.ssh/authorized_keys
+                         chown -R ${USER_NAME}:${USER_NAME} /home/${USER_NAME}/.ssh
+                         chmod 700 /home/${USER_NAME}/.ssh
+                         echo ${SSHKEY} > /home/${USER_NAME}/.ssh/authorized_keys
+                         chmod 600 /home/${USER_NAME}/.ssh/authorized_keys
                 
-        # Display the username, password, and the host where the user was created.
-        echo 'Yaaay, User was created'
-        echo 'username: '
-        echo "${USER_NAME}"
-        echo
-        echo 'password: '
-        echo "${PASSWORD}"
-        echo
-        curhostname=$(cat /etc/hostname)
-        echo 'hostname: '
-        echo "${curhostname}"
-        ;;
-			9)
-				# Reboot the system
-				read -s -n 1 -p "Press any key to reboot!"
-				echo ""
-				echo "Okey, Rebooting"
-				reboot now
-				;;
+                         # Display the username, password, and the host where the user was created.
+                         echo 'Yaaay, User was created'
+                         echo 'username: '
+                         echo "${USER_NAME}"
+                         echo
+                         echo 'password: '
+                         echo "${PASSWORD}"
+                         echo
+                         curhostname=$(cat /etc/hostname)
+                         echo 'hostname: '
+                         echo "${curhostname}"
+                         ;;
+		        9)
+			 # Reboot the system
+			 read -s -n 1 -p "Press any key to reboot!"
+			 echo ""
+			 echo "Okey, Rebooting"
+			 reboot now
+			 ;;
 	    esac
 	done
 fi
