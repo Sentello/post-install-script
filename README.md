@@ -2,7 +2,6 @@
 # These scipts will help you with post install tasks, like:
 
 **0.** Update and upgrade your server
-
 **1.** Set resolv.conf and /etc/hosts
 **2.** Set NTP
 **3.** Set new hostname
