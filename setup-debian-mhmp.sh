@@ -65,7 +65,7 @@ else
                           echo "Enter account comments:  "
 			  read COMMENT
                 
-                          # Read SSH pub keys.
+                          # Read SSH pub key
                           shift
                           echo "Enter user account authorized SSH key: "
                           read SSHKEY
