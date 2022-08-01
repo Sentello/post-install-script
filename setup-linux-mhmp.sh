@@ -110,6 +110,8 @@ else
 			 echo " "
 			 
                          # Display the username, password, and the host where the user was created
+			 echo " "
+			 echo "-------------------------------------------------------------------------"
                          echo 'Yaaay, User was created'
                          echo 'username: '
                          echo "${USER_NAME}"
@@ -120,6 +122,8 @@ else
                          curhostname=$(cat /etc/hostname)
                          echo 'hostname: '
                          echo "${curhostname}"
+			 echo " "
+			 echo "-------------------------------------------------------------------------"
                          ;;
 		        9)
 			 # Reboot the system
