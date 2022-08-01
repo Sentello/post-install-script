@@ -14,7 +14,7 @@
 0. wget https://raw.githubusercontent.com/Sentello/post-install-script/main/setup-debian-oict.sh
 1. chmod a+x setup-debian-oict.sh
 2. ./setup-debian-oict.sh
-[...]
+```
 ------------
 
 
