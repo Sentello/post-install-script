@@ -10,7 +10,7 @@ Effortless way to setup your fresh Ubuntu, Debian and AlmaLinux installation.
 5. Install FreeIPA client
 6. Set FreeIPA client 
 
-# How to run:
+# Run the script:
 ```console
 $ wget https://raw.githubusercontent.com/Sentello/post-install-script/main/setup-debian-oict.sh
 $ chmod a+x setup-debian-oict.sh
