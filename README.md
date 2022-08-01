@@ -11,9 +11,9 @@
 
 # How to run:
 ```console
-wget https://raw.githubusercontent.com/Sentello/post-install-script/main/setup-debian-oict.sh
-chmod a+x setup-debian-oict.sh
-./setup-debian-oict.sh
+$ wget https://raw.githubusercontent.com/Sentello/post-install-script/main/setup-debian-oict.sh
+$ chmod a+x setup-debian-oict.sh
+$ ./setup-debian-oict.sh
 ```
 ------------
 
