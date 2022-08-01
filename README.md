@@ -1,4 +1,3 @@
-# post-install-script
 Effortless way to setup your fresh Ubuntu, Debian and AlmaLinux installation.
 # These scipts will help you with post install tasks, like:
 
