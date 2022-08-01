@@ -7,7 +7,7 @@
 3. Set new hostname
 4. Set SSH to permit root and accept SSH keys only
 5. Install FreeIPA client
-6. Set FreeIPA client- 
+6. Set FreeIPA client 
 
 # How to run:
 0. wget https://raw.githubusercontent.com/Sentello/post-install-script/main/setup-debian-oict.sh
