@@ -1,12 +1,12 @@
 #!/bin/bash
-# Spported OS: Debian 10, Ubuntu 20.04
+# Spported OS: Debian 10, Ubuntu 20.04, Ubuntu 22.04, AlmaLinux 9.0
 # Post install script ver. 1.0
 # INSTRUCTIONS FOR USE:
 # 1. Copy this shell script to your /home directory or the /tmp directory.
 # 2. Make it executable with the following command: 
-#      chmod a+x setup-debian-mhmp.sh
+#      chmod a+x setup-linux-mhmp.sh
 # 3. Execute the script as a sudo user:
-#      sudo ./setup-debian-mhmp.sh
+#      sudo ./setup-linux-mhmp.sh
 
 
 if [[ $EUID -ne 0 ]]; then
@@ -15,9 +15,10 @@ if [[ $EUID -ne 0 ]]; then
 else
 	#Update and Upgrade
 	echo "Updating and Upgrading"
-	apt-get update && apt-get upgrade -y &&	apt-get install open-vm-tools
-	
-	apt-get install dialog
+	apt-get update && apt-get upgrade -y &&	apt-get install open-vm-tools -y
+	dnf update && dnf upgrade -y &&	dnf install open-vm-tools -y
+	apt-get install dialog -y
+	dnf install dialog -y
 	cmd=(dialog --separate-output --checklist "Please, select what do you want to do:" 22 76 16)
 	options=(1 "Set hostname" off # any option can be set to "off"
 			2 "Set hostname in zabbix_agentd.conf" on
