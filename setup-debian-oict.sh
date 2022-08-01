@@ -1,5 +1,5 @@
 #!/bin/bash
-# Spported OS: Debian 10, Ubuntu 20.04
+# Spported OS: Debian 10/11, Ubuntu 20.04
 # Post install script ver. 1.0
 # INSTRUCTIONS FOR USE:
 # 1. Copy this shell script to your /home directory or the /tmp directory.
