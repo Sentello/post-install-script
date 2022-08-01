@@ -123,6 +123,7 @@ else
 			 read -s -n 1 -p "Press any key to reboot!"
 			 echo ""
 			 echo "Okey, Rebooting"
+			 sleep 5
 			 reboot now
 			 ;;
 	    esac
