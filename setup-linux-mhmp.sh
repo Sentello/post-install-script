@@ -48,6 +48,7 @@ else
 				
 			 # Display new hostname
 			 echo "New hostname: $newhostname"
+			 echo " "
 			 ;;
 			2)
 			  # Display current hostname
@@ -97,6 +98,7 @@ else
                 
                          # Add user to sudo 
                          usermod -aG sudo ${USER_NAME}
+			 sudo gpasswd -a ${USER_NAME} wheel
                 
                          # SSH keys folder
                          mkdir /home/${USER_NAME}/.ssh
@@ -105,15 +107,16 @@ else
                          chmod 700 /home/${USER_NAME}/.ssh
                          echo ${SSHKEY} > /home/${USER_NAME}/.ssh/authorized_keys
                          chmod 600 /home/${USER_NAME}/.ssh/authorized_keys
-                
+			 echo " "
+			 
                          # Display the username, password, and the host where the user was created
                          echo 'Yaaay, User was created'
                          echo 'username: '
                          echo "${USER_NAME}"
-                         echo
+                         echo " "
                          echo 'password: '
                          echo "${PASSWORD}"
-                         echo
+                         echo " "
                          curhostname=$(cat /etc/hostname)
                          echo 'hostname: '
                          echo "${curhostname}"
@@ -121,8 +124,8 @@ else
 		        9)
 			 # Reboot the system
 			 read -s -n 1 -p "Press any key to reboot!"
-			 echo ""
-			 echo "Okey, Rebooting"
+			 echo " "
+			 echo "Okey, rebooting"
 			 sleep 5
 			 reboot now
 			 ;;
