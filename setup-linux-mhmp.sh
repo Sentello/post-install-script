@@ -61,7 +61,7 @@ else
                           read USER_NAME
                 
 
-                          # The rest of the parameters are for accout comments.
+                          # The rest of the parameters are for accout comments
                           shift
                           echo "Enter account comments:  "
 			  read COMMENT
@@ -72,7 +72,7 @@ else
                           read SSHKEY
                           # Create the user wtih teh password.
                           useradd -c "${COMMENT}" -m ${USER_NAME} -s /bin/bash &> /dev/null
-                          # Check to see if the useradd command succeeded.
+                          # Check to see if the useradd command succeeded
                 
                           if [[ "${?}" -ne 0 ]]
                              then
@@ -80,19 +80,19 @@ else
                              exit 1
                           fi
 
-                         # Set the password.
+                         # Set the password
                          PASSWORD=$(date +%s%N | base64 )
                          # echo ${PASSWORD} | passwd --stdin ${USER_NAME} &> /dev/null
                          echo -e "${PASSWORD}\n${PASSWORD}" | passwd ${USER_NAME} &> /dev/null
                 
-                         # Check to see if the password command succeeded.
+                         # Check to see if the password command succeeded
                          if [[ "${?}" -ne 0 ]]
                             then
                                 echo 'ERROR: The password could not be set.' >&2
                             exit 1
                          fi
 
-                         # Force password change on first login.
+                         # Force password change on first login
                          passwd -e ${USER_NAME} &> /dev/null
                 
                          # Add user to sudo 
@@ -106,7 +106,7 @@ else
                          echo ${SSHKEY} > /home/${USER_NAME}/.ssh/authorized_keys
                          chmod 600 /home/${USER_NAME}/.ssh/authorized_keys
                 
-                         # Display the username, password, and the host where the user was created.
+                         # Display the username, password, and the host where the user was created
                          echo 'Yaaay, User was created'
                          echo 'username: '
                          echo "${USER_NAME}"
